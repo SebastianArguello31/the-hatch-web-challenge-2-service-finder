@@ -2,6 +2,7 @@ import { getProviders } from "./api.js";
 import { createElement, createStars, FALLBACK_IMAGE } from "./utils.js";
 
 const listElement = document.querySelector("#providers-list");
+const statusElement = document.querySelector("#providers-status");
 
 function createProviderCard(provider) {
     const card = createElement("li", { className: "provider-card" });
@@ -83,9 +84,53 @@ function renderProviders(providers) {
     listElement.replaceChildren(...cards);
 }
 
-async function init() {
-    const providers = await getProviders();
-    renderProviders(providers);
+function showStatus(message, { type = "info", withSpinner = false, onRetry } = {}) {
+    const box = createElement("div", { className: `status status--${type}` });
+
+    if (withSpinner) {
+        box.append(createElement("span", { className: "spinner", attrs: { "aria-hidden": "true" } }));
+    }
+
+    box.append(createElement("p", { text: message }));
+
+    if (onRetry) {
+        const retryButton = createElement("button", {
+            className: "btn btn--primary",
+            text: "Reintentar",
+            attrs: { type: "button" },
+        });
+        retryButton.addEventListener("click", onRetry);
+        box.append(retryButton);
+    }
+
+    statusElement.replaceChildren(box);
+    listElement.replaceChildren();
 }
 
-init();
+function clearStatus() {
+    statusElement.replaceChildren();
+}
+
+async function loadProviders() {
+    showStatus("Cargando proveedores...", { withSpinner: true });
+
+    try {
+        const providers = await getProviders();
+
+        if (providers.length === 0) {
+            showStatus("No se encontraron proveedores disponibles.");
+            return;
+        }
+
+        clearStatus();
+        renderProviders(providers);
+    } catch (error) {
+        console.error(error);
+        showStatus("No pudimos cargar los proveedores. Intenta nuevamente.", {
+            type: "error",
+            onRetry: loadProviders,
+        });
+    }
+}
+
+loadProviders();
