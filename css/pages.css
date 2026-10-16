@@ -82,6 +82,26 @@
   color: var(--color-text-muted);
 }
 
+/* ---------- Páginas interiores ---------- */
+.page {
+  padding-block: var(--space-8) var(--space-12);
+}
+
+.page__lead {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+/* ---------- Proveedores: grid ---------- */
+.providers-grid {
+  display: grid;
+  grid-template-columns: 1fr;         
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 /* ---------- Tablet ---------- */
 @media (min-width: 768px) {
   .category-grid {
@@ -91,11 +111,19 @@
   .steps {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .providers-grid {
+    grid-template-columns: repeat(2, 1fr);   /* tablet: 2 columnas */
+  }
 }
 
 /* ---------- Desktop ---------- */
 @media (min-width: 1024px) {
   .hero {
     padding-block: 6rem;
+  }
+
+  .providers-grid {
+    grid-template-columns: repeat(3, 1fr);   /* desktop: 3 columnas */
   }
 }
