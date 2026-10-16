@@ -176,6 +176,16 @@ function populateCategories(providers) {
     categorySelect.append(...options);
 }
 
+function applyCategoryFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const isValid = [...categorySelect.options].some(option => option.value === category);
+
+    if (isValid) {
+        categorySelect.value = category;
+    }
+}
+
 async function loadProviders() {
     filtersForm.hidden = true;
     showStatus("Cargando proveedores...", { withSpinner: true });
@@ -189,6 +199,7 @@ async function loadProviders() {
         }
 
         populateCategories(allProviders);
+        applyCategoryFromUrl();
         filtersForm.hidden = false;
         updateList();
     } catch (error) {
