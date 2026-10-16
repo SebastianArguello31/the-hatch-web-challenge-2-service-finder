@@ -236,3 +236,31 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);  
+}
+
+.skip-link:hover {
+  color: #fff;
+}
+
+.skip-link:focus {
+  transform: translateY(0);      
+}
+
+/* main solo recibe foco por código (tras el skip link), no es interactivo */
+main:focus {
+  outline: none;
+}
