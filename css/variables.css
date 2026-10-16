@@ -3,7 +3,7 @@
    Único lugar donde se definen colores, tipografía,
    espaciados, bordes y sombras.
    ========================================================== */
-   
+
 :root {
   /* Colores */
   --color-primary: #1d4ed8;
@@ -16,6 +16,7 @@
   --color-background: #f9fafb;
   --color-surface: #ffffff;
   --color-border: #e5e7eb;
+  --color-border-strong: #6b7280;  
   --color-success: #15803d;
   --color-error: #b91c1c;
 
