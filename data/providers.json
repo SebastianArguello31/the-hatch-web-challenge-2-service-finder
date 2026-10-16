@@ -1,0 +1,220 @@
+[
+  {
+    "id": 1,
+    "name": "Juan González",
+    "category": "Plomería",
+    "rating": 4.8,
+    "reviews": 37,
+    "description": "Plomería residencial y comercial. Atención rápida y trabajo garantizado.",
+    "zone": "Villa Morra",
+    "phone": "+595981000001",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 8,
+    "available": true,
+    "services": [
+        "Reparación de pérdidas",
+        "Instalación de griferías",
+        "Destape de cañerías"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Ramón Benítez",
+    "category": "Plomería",
+    "rating": 4.3,
+    "reviews": 21,
+    "description": "Instalación y mantenimiento de tanques, termotanques y redes de agua.",
+    "zone": "Barrio Obrero",
+    "phone": "+595981000002",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 12,
+    "available": false,
+    "services": [
+        "Instalación de termotanques",
+        "Mantenimiento de tanques",
+        "Cambio de cañerías"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Carlos Villalba",
+    "category": "Electricidad",
+    "rating": 4.9,
+    "reviews": 54,
+    "description": "Electricista matriculado para hogares y comercios. Presupuesto sin cargo.",
+    "zone": "Recoleta",
+    "phone": "+595981000003",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 10,
+    "available": true,
+    "services": [
+        "Instalaciones eléctricas",
+        "Cambio de tableros",
+        "Solución de cortocircuitos",
+        "Iluminación"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Marcelo Ortiz",
+    "category": "Electricidad",
+    "rating": 4.5,
+    "reviews": 18,
+    "description": "Servicio eléctrico domiciliario y urgencias durante todo el día.",
+    "zone": "Sajonia",
+    "phone": "+595981000004",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 6,
+    "available": true,
+    "services": [
+        "Urgencias eléctricas",
+        "Instalación de tomacorrientes",
+        "Colocación de ventiladores"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Diego Acosta",
+    "category": "Carpintería",
+    "rating": 4.7,
+    "reviews": 29,
+    "description": "Muebles a medida, placares y cocinas en madera y melamina.",
+    "zone": "Mburucuyá",
+    "phone": "+595981000005",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 15,
+    "available": true,
+    "services": [
+        "Muebles a medida",
+        "Placares y cocinas",
+        "Restauración de muebles"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Néstor Cabrera",
+    "category": "Carpintería",
+    "rating": 4.1,
+    "reviews": 9,
+    "description": "Puertas, ventanas y reparaciones generales en madera.",
+    "zone": "Loma Pytã",
+    "phone": "+595981000006",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 5,
+    "available": true,
+    "services": [
+        "Colocación de puertas",
+        "Reparación de ventanas",
+        "Arreglos en madera"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Fabiola Giménez",
+    "category": "Pintura",
+    "rating": 4.6,
+    "reviews": 33,
+    "description": "Pintura de interiores y exteriores con acabado prolijo y limpieza final.",
+    "zone": "Las Mercedes",
+    "phone": "+595981000007",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 9,
+    "available": true,
+    "services": [
+        "Pintura de interiores",
+        "Pintura de fachadas",
+        "Reparación de paredes"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Óscar Rolón",
+    "category": "Pintura",
+    "rating": 4.2,
+    "reviews": 14,
+    "description": "Pintor de obra y de decoración, con trabajos en departamentos y casas.",
+    "zone": "Trinidad",
+    "phone": "+595981000008",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 7,
+    "available": false,
+    "services": [
+        "Pintura de departamentos",
+        "Impermeabilización",
+        "Texturados decorativos"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Julio Martínez",
+    "category": "Mecánica",
+    "rating": 4.8,
+    "reviews": 41,
+    "description": "Mecánica general y diagnóstico computarizado de vehículos livianos.",
+    "zone": "Santa Ana",
+    "phone": "+595981000009",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 14,
+    "available": true,
+    "services": [
+        "Diagnóstico computarizado",
+        "Cambio de aceite y filtros",
+        "Frenos y suspensión"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Pedro Escobar",
+    "category": "Mecánica",
+    "rating": 3.9,
+    "reviews": 11,
+    "description": "Mecánico a domicilio para arranques, baterías y fallas comunes.",
+    "zone": "San Vicente",
+    "phone": "+595981000010",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 4,
+    "available": true,
+    "services": [
+        "Cambio de batería",
+        "Revisión de arranque",
+        "Asistencia a domicilio"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Lucía Duarte",
+    "category": "Técnicos",
+    "rating": 4.9,
+    "reviews": 62,
+    "description": "Técnica en aires acondicionados: instalación, limpieza y reparación.",
+    "zone": "Carmelitas",
+    "phone": "+595981000011",
+    "image": "./assets/images/provider-1.webp",
+    "experience": 11,
+    "available": true,
+    "services": [
+        "Instalación de aire acondicionado",
+        "Limpieza y mantenimiento",
+        "Carga de gas",
+        "Reparación de electrodomésticos"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Andrés Franco",
+    "category": "Técnicos",
+    "rating": 4.4,
+    "reviews": 16,
+    "description": "Servicio técnico de computadoras, redes y equipos del hogar.",
+    "zone": "Ycuá Sati",
+    "phone": null,
+    "image": "./assets/images/provider-1.webp",
+    "experience": 6,
+    "available": true,
+    "services": [
+        "Reparación de computadoras",
+        "Configuración de redes wifi",
+        "Instalación de software"
+    ]
+  }
+]
