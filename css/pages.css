@@ -145,6 +145,96 @@
   color: var(--color-text-muted);
 }
 
+/* ---------- Detalle del proveedor ---------- */
+.back-link {
+  margin-bottom: var(--space-6);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 48rem;
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.detail:empty {
+  display: none;
+}
+
+.detail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.detail__image {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background-color: var(--color-border);
+}
+
+.detail__name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-2xl);
+}
+
+.detail__category {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.detail__rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+
+.detail__description {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.detail__facts {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border-radius: var(--radius-md);
+}
+
+.detail__fact dt {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.detail__fact dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail__services {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.detail__no-phone {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
 /* ---------- Tablet ---------- */
 @media (min-width: 768px) {
   .category-grid {
@@ -162,6 +252,23 @@
   .filters {
     grid-template-columns: 2fr 1fr 1fr;
     align-items: end;
+  }
+
+  .detail {
+    padding: var(--space-8);
+  }
+
+  .detail__header {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .detail__rating {
+    justify-content: flex-start;
+  }
+
+  .detail__facts {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
