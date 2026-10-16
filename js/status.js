@@ -11,13 +11,20 @@ export function renderStatus(container, message, { type = "info", withSpinner = 
     box.append(createElement("p", { text: message }));
 
     if (action) {
-        const button = createElement("button", {
-            className: "btn btn--primary",
-            text: action.label,
-            attrs: { type: "button" },
-        });
-        button.addEventListener("click", action.onClick);
-        box.append(button);
+        const control = action.href
+            ? createElement("a", {
+                className: "btn btn--primary",
+                text: action.label,
+                attrs: { href: action.href },
+            })
+            : createElement("button", {
+                className: "btn btn--primary",
+                text: action.label,
+                attrs: { type: "button" },
+            });
+
+        if (action.onClick) control.addEventListener("click", action.onClick);
+        box.append(control);
     }
 
     container.replaceChildren(box);

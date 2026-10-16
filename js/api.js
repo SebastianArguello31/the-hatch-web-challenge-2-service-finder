@@ -9,3 +9,8 @@ export async function getProviders() {
 
     return response.json();
 }
+
+export async function getProviderById(id) {
+    const providers = await getProviders();
+    return providers.find(provider => provider.id === id);
+}

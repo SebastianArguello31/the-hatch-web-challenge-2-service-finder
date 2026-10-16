@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del proveedor | Servicios Asunción</title>
+    <meta name="description" content="Perfil de un proveedor de servicios en Asunción: calificación, zona, experiencia y servicios ofrecidos.">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="./index.html" class="site-header__logo">Servicios Asunción</a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li><a href="./index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="./providers.html" class="nav-link">Proveedores</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page">
+        <a href="./providers.html" class="btn btn--secondary back-link">← Volver al listado</a>
+
+        <h1 class="visually-hidden">Perfil del proveedor</h1>
+
+        <div id="provider-status" aria-live="polite"></div>
+        <article id="provider-detail" class="detail"></article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Servicios Asunción. Proyecto académico con datos ficticios.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/provider-detail.js"></script>
+
+</body>
+</html>
