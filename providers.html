@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores de servicios | Servicios Asunción</title>
+    <meta name="description" content="Listado de plomeros, electricistas, técnicos, carpinteros, pintores y mecánicos en Asunción.">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="./index.html" class="site-header__logo">Servicios Asunción</a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li><a href="./index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="./providers.html" class="nav-link" aria-current="page">Proveedores</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido" tabindex="-1" class="container page">
+        <h1>Proveedores de servicios</h1>
+        <p class="page__lead">Elegí un profesional y contactalo directamente.</p>
+
+        <form id="filters-form" class="filters" role="search" aria-label="Buscar proveedores" hidden>
+            <div class="filters__field">
+                <label for="search-input" class="filters__label">Buscar por nombre</label>
+                <input id="search-input" class="filters__control" type="search" placeholder="Ej: Juan" autocomplete="off">
+            </div>
+             <div class="filters__field">
+                <label for="category-select" class="filters__label">Categoría</label>
+                <select id="category-select" class="filters__control">
+                    <option value="">Todas las categorías</option>
+                </select>
+            </div>
+            <div class="filters__field">
+                <label for="sort-select" class="filters__label">Ordenar por</label>
+                <select id="sort-select" class="filters__control">
+                    <option value="default">Orden original</option>
+                    <option value="rating">Mejor puntuación</option>
+                </select>
+            </div>    
+        </form>
+
+        <p id="results-count" class="results-count" aria-live="polite"></p>
+
+        <div id="providers-status" aria-live="polite"></div>
+        <ul id="providers-list" class="providers-grid"></ul>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Servicios Asunción. Proyecto académico con datos ficticios.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/providers.js"></script>
+
+</body>
+</html>

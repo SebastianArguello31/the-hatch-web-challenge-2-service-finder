@@ -1,0 +1,284 @@
+/* ==========================================================
+   Estilos específicos por página
+   ========================================================== */
+
+/* ---------- Inicio: hero ---------- */
+.hero {
+  padding-block: var(--space-12);
+  background-color: var(--color-primary-soft);
+}
+
+.hero__text {
+  max-width: 40rem;
+  margin-bottom: var(--space-6);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Secciones genéricas ---------- */
+.section {
+  padding-block: var(--space-12);
+}
+
+.section--alt {
+  background-color: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+}
+
+.section__lead {
+  max-width: 45rem;
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Inicio: categorías ---------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.category-card {
+  display: block;
+  padding: var(--space-6) var(--space-4);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.category-card:hover {
+  color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Inicio: cómo funciona ---------- */
+.steps {
+  display: grid;
+  gap: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.step h3 {
+  color: var(--color-primary);
+}
+
+.step p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Páginas interiores ---------- */
+.page {
+  padding-block: var(--space-8) var(--space-12);
+}
+
+.page__lead {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+/* ---------- Proveedores: grid ---------- */
+.providers-grid {
+  display: grid;
+  grid-template-columns: 1fr;         
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Proveedores: barra de filtros ---------- */
+.filters {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.filters[hidden] {
+  display: none;
+}
+
+.filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.filters__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.filters__control {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.results-count {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Detalle del proveedor ---------- */
+.back-link {
+  margin-bottom: var(--space-6);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 48rem;
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.detail:empty {
+  display: none;
+}
+
+.detail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.detail__image {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background-color: var(--color-border);
+}
+
+.detail__name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-2xl);
+}
+
+.detail__category {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.detail__rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+
+.detail__description {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.detail__facts {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border-radius: var(--radius-md);
+}
+
+.detail__fact dt {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.detail__fact dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail__services {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.detail__no-phone {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .providers-grid {
+    grid-template-columns: repeat(2, 1fr);   /* tablet: 2 columnas */
+  }
+
+  .filters {
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: end;
+  }
+
+  .detail {
+    padding: var(--space-8);
+  }
+
+  .detail__header {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .detail__rating {
+    justify-content: flex-start;
+  }
+
+  .detail__facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: 6rem;
+  }
+
+  .providers-grid {
+    grid-template-columns: repeat(3, 1fr);   /* desktop: 3 columnas */
+  }
+}
