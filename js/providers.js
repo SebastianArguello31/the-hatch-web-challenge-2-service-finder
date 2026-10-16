@@ -84,7 +84,7 @@ function renderProviders(providers) {
     listElement.replaceChildren(...cards);
 }
 
-function showStatus(message, { type = "info", withSpinner = false, onRetry } = {}) {
+function showStatus(message, { type = "info", withSpinner = false, action } = {}) {
     const box = createElement("div", { className: `status status--${type}` });
 
     if (withSpinner) {
@@ -93,14 +93,14 @@ function showStatus(message, { type = "info", withSpinner = false, onRetry } = {
 
     box.append(createElement("p", { text: message }));
 
-    if (onRetry) {
-        const retryButton = createElement("button", {
+    if (action) {
+        const button = createElement("button", {
             className: "btn btn--primary",
-            text: "Reintentar",
+            text: action.label,
             attrs: { type: "button" },
         });
-        retryButton.addEventListener("click", onRetry);
-        box.append(retryButton);
+        button.addEventListener("click", action.onClick);
+        box.append(button);
     }
 
     statusElement.replaceChildren(box);
@@ -128,7 +128,7 @@ async function loadProviders() {
         console.error(error);
         showStatus("No pudimos cargar los proveedores. Intenta nuevamente.", {
             type: "error",
-            onRetry: loadProviders,
+            action: { label: "Reintentar", onClick: loadProviders },
         });
     }
 }
