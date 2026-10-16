@@ -1,8 +1,13 @@
 import { getProviders } from "./api.js";
-import { createElement, createStars, FALLBACK_IMAGE } from "./utils.js";
+import { createElement, createStars, normalizeText, FALLBACK_IMAGE } from "./utils.js";
 
 const listElement = document.querySelector("#providers-list");
 const statusElement = document.querySelector("#providers-status");
+const countElement = document.querySelector("#results-count");
+const filtersForm = document.querySelector("#filters-form");
+const searchInput = document.querySelector("#search-input");
+
+let allProviders = [];
 
 function createProviderCard(provider) {
     const card = createElement("li", { className: "provider-card" });
@@ -105,25 +110,59 @@ function showStatus(message, { type = "info", withSpinner = false, action } = {}
 
     statusElement.replaceChildren(box);
     listElement.replaceChildren();
+
+    countElement.textContent = "";
 }
 
 function clearStatus() {
     statusElement.replaceChildren();
 }
 
+function getVisibleProviders() {
+    const query = normalizeText(searchInput.value);
+
+    return allProviders.filter(provider =>
+        normalizeText(provider.name).includes(query)
+    );
+}
+
+function resetFilters() {
+    filtersForm.reset();
+    updateList();
+}
+
+function updateList() {
+    const visible = getVisibleProviders();
+
+    if (visible.length === 0) {
+        showStatus("No encontramos proveedores con esos filtros.", {
+            action: { label: "Limpiar filtros", onClick: resetFilters },
+        });
+    return;
+  }
+
+    clearStatus();
+    renderProviders(visible);
+    countElement.textContent = `Mostrando ${visible.length} de ${allProviders.length} proveedores`;
+}
+
+filtersForm.addEventListener("input", updateList);
+filtersForm.addEventListener("submit", event => event.preventDefault());
+
 async function loadProviders() {
+    filtersForm.hidden = true;
     showStatus("Cargando proveedores...", { withSpinner: true });
 
     try {
-        const providers = await getProviders();
+        allProviders = await getProviders();
 
-        if (providers.length === 0) {
+        if (allProviders.length === 0) {
             showStatus("No se encontraron proveedores disponibles.");
             return;
         }
 
-        clearStatus();
-        renderProviders(providers);
+        filtersForm.hidden = false;
+        updateList();
     } catch (error) {
         console.error(error);
         showStatus("No pudimos cargar los proveedores. Intenta nuevamente.", {

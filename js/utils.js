@@ -25,3 +25,12 @@ export function createStars(rating) {
         attrs: { role: "img", "aria-label": `Calificación ${rating} de 5` },
     });
 }
+
+// Quita acentos y mayúsculas para comparar textos de forma tolerante
+export function normalizeText(text) {
+    return text
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+        .toLowerCase()
+        .trim();
+}
