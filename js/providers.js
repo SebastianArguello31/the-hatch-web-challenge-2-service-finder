@@ -101,6 +101,7 @@ function getVisibleProviders() {
 function resetFilters() {
     filtersForm.reset();
     updateList();
+    searchInput.focus();
 }
 
 function updateList() {
