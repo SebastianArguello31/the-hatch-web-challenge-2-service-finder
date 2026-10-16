@@ -7,6 +7,7 @@ const countElement = document.querySelector("#results-count");
 const filtersForm = document.querySelector("#filters-form");
 const searchInput = document.querySelector("#search-input");
 const categorySelect = document.querySelector("#category-select");
+const sortSelect = document.querySelector("#sort-select");
 
 let allProviders = [];
 
@@ -119,15 +120,26 @@ function clearStatus() {
     statusElement.replaceChildren();
 }
 
+// Mayor rating primero; si empatan, el que tiene más reseñas
+function compareByRating(a, b) {
+    return b.rating - a.rating || b.reviews - a.reviews;
+}
+
 function getVisibleProviders() {
     const query = normalizeText(searchInput.value);
     const category = categorySelect.value;
 
-    return allProviders.filter(provider => {
+    const filtered = allProviders.filter(provider => {
         const matchesName = normalizeText(provider.name).includes(query);
         const matchesCategory = category === "" || provider.category === category;
         return matchesName && matchesCategory;
     });
+
+    if (sortSelect.value === "rating") {
+        filtered.sort(compareByRating);
+    }
+
+    return filtered;
 }
 
 function resetFilters() {
