@@ -235,6 +235,33 @@
   color: var(--color-text-muted);
 }
 
+/* El contador ocupa espacio incluso antes de recibir los datos. */
+.results-count {
+  min-height: 1.5em;
+}
+
+/* Mantiene el footer fuera del primer viewport mientras carga
+   el listado. También conserva espacio en los estados vacíos. */
+.providers-results {
+  position: relative;
+}
+
+/* El mensaje de carga no agrega una fila encima de las tarjetas. */
+#providers-status {
+  position: static;
+}
+
+.filters__control:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.provider-card__image,
+.detail__image {
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
 /* ---------- Tablet ---------- */
 @media (min-width: 768px) {
   .category-grid {

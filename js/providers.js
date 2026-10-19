@@ -130,7 +130,7 @@ function populateCategories(providers) {
         createElement("option", { text: category, attrs: { value: category } })
     );
 
-    categorySelect.append(...options);
+    categorySelect.replaceChildren(categorySelect.options[0], ...options);
 }
 
 function applyCategoryFromUrl() {
@@ -144,7 +144,12 @@ function applyCategoryFromUrl() {
 }
 
 async function loadProviders() {
-    filtersForm.hidden = true;
+    filtersForm.setAttribute("aria-busy", "true");
+
+    for (const control of filtersForm.elements) {
+        control.disabled = true;
+    }
+
     showStatus("Cargando proveedores...", { withSpinner: true });
 
     try {
@@ -157,14 +162,27 @@ async function loadProviders() {
 
         populateCategories(allProviders);
         applyCategoryFromUrl();
-        filtersForm.hidden = false;
+
+        for (const control of filtersForm.elements) {
+            control.disabled = false;
+        }
+
         updateList();
     } catch (error) {
         console.error(error);
-        showStatus("No pudimos cargar los proveedores. Intenta nuevamente.", {
-            type: "error",
-            action: { label: "Reintentar", onClick: loadProviders },
-        });
+
+        showStatus(
+            "No pudimos cargar los proveedores. Intenta nuevamente.",
+            {
+                type: "error",
+                action: {
+                    label: "Reintentar",
+                    onClick: loadProviders,
+                },
+            }
+        );
+    } finally {
+        filtersForm.setAttribute("aria-busy", "false");
     }
 }
 

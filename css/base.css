@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+/* Evita cambios de ancho al aparecer la barra de desplazamiento. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -15,6 +20,19 @@ body {
   line-height: var(--leading-body);
   color: var(--color-text);
   background-color: var(--color-background);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
+}
+
+.site-header,
+.site-footer {
+  flex-shrink: 0;
 }
 
 h1, h2, h3, h4 {
