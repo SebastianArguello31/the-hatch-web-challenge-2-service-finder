@@ -29,7 +29,7 @@
         <h1>Proveedores de servicios</h1>
         <p class="page__lead">Elegí un profesional y contactalo directamente.</p>
 
-        <form id="filters-form" class="filters" role="search" aria-label="Buscar proveedores" hidden>
+        <form  id="filters-form" class="filters" role="search" aria-label="Buscar proveedores" aria-busy="true">
             <div class="filters__field">
                 <label for="search-input" class="filters__label">Buscar por nombre</label>
                 <input id="search-input" class="filters__control" type="search" placeholder="Ej: Juan" autocomplete="off">
@@ -51,8 +51,10 @@
 
         <p id="results-count" class="results-count" aria-live="polite"></p>
 
-        <div id="providers-status" aria-live="polite"></div>
-        <ul id="providers-list" class="providers-grid"></ul>
+        <div class="providers-results">
+            <div id="providers-status" aria-live="polite"></div>
+            <ul id="providers-list" class="providers-grid"></ul>
+        </div>
     </main>
 
     <footer class="site-footer">
