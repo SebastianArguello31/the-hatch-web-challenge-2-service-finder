@@ -22,8 +22,17 @@ Las versiones identifican las entregas documentadas del proyecto; este archivo n
 
 ### Relación con el feedback y validación
 
-- **P1 / T1:** la persona buscó “cañería rota” y tuvo que recurrir a Plomería. La búsqueda por problemas habituales implementa la mejora priorizada a partir de ese hallazgo.
-- **P2 / T2:** conservar búsqueda, categoría y orden al regresar del perfil sigue pendiente.
+Seguimiento de las cinco sesiones originales. Los comentarios se conservan textualmente; los estados distinguen los cambios implementados de las propuestas pendientes y de los comportamientos preexistentes.
+
+| Participante | Tarea asignada | Dificultad encontrada | Comentario textual | Cambio aplicado o estado |
+|---|---|---|---|---|
+| P1 / T1 | Encontrar ayuda para una cañería rota. | La búsqueda por el problema no encontró el servicio; tuvo que recurrir a la categoría Plomería. | “Pensé en el problema, no en el nombre del servicio. Con la categoría sí encontré a quién buscar”. | Implementada en 3.0.0 la búsqueda por problemas habituales, ampliada a nombre, categoría, descripción y servicios, con equivalencias y una etiqueta con ejemplos. Pendiente de nueva validación con usuarios. |
+| P2 / T2 | Comparar pintores y elegir el mejor calificado. | Sin dificultad relevante; solicitó conservar el orden al regresar del perfil. | “Pude ordenar por puntuación y comparar las reseñas. Me gustaría conservar ese orden al volver del perfil”. | Pendiente conservar búsqueda, categoría y orden al regresar del perfil. |
+| P3 / T3 | Abrir un perfil e identificar cómo contactar usando teclado. | Sin dificultad relevante; identificó el foco y la llamada. La longitud del recorrido completo queda por evaluar. | “Veo dónde está el foco y el botón dice claramente que sirve para llamar”. | Sin cambio nuevo atribuido a esta sesión. Se conserva el foco visible y la acción de llamada; queda pendiente evaluar el recorrido completo. |
+| P4 / T4 | Buscar “astronauta” y recuperar el listado. | Sin dificultad relevante; comprendió el estado sin coincidencias y encontró Limpiar filtros. | “Entendí que no había coincidencias y pude volver a ver todos con un botón”. | Sin cambio nuevo atribuido a esta sesión. Se conserva el estado sin coincidencias y la acción Limpiar filtros. |
+| P5 / T5 | Recuperar el listado tras un fallo de carga. | Identificó el reintento, pero dudó si fallaba la conexión o la página. | “Entendí cómo reintentar, pero no sabía si fallaba mi conexión o la página”. | Sin cambio nuevo atribuido a esta sesión. El mensaje actual ofrece reintento sin afirmar una causa; queda pendiente evaluar una explicación más orientativa. |
+
+- El seguimiento en `docs/user-testing.md` se actualizó para registrar P1 como implementado en 3.0.0, conservando los resultados de las sesiones originales.
 - Las calificaciones locales son una funcionalidad nueva; no se atribuyen a un testimonio específico de las cinco sesiones.
 - El registro de usabilidad conserva las sesiones originales y sus propuestas. Sigue pendiente una nueva sesión que valide la búsqueda ampliada con usuarios.
 - Los reportes Lighthouse disponibles corresponden a 2.0.0; no constituyen mediciones de 3.0.0.
