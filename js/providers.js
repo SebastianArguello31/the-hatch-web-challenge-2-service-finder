@@ -1,6 +1,7 @@
 // Coordina la carga del catálogo y la actualización de filtros y tarjetas.
 import { getProviders } from "./api.js";
-import { createElement, createStars, normalizeText } from "./utils.js";
+import { createElement, createStars } from "./utils.js";
+import { matchesProviderSearch } from "./provider-search.js";
 import { createProviderImage, createAvailabilityBadge, createCallButton } from "./provider-ui.js";
 import { renderStatus } from "./status.js";
 
@@ -87,15 +88,15 @@ function compareByRating(a, b) {
     return b.rating - a.rating || b.reviews - a.reviews;
 }
 
-// Combina nombre y categoría; filter crea un arreglo que se ordena sin modificar allProviders.
+// Combina texto, problemas frecuentes y categoría; filter crea un arreglo que se ordena sin modificar allProviders.
 function getVisibleProviders() {
-    const query = normalizeText(searchInput.value);
+    const query = searchInput.value;
     const category = categorySelect.value;
 
     const filtered = allProviders.filter(provider => {
-        const matchesName = normalizeText(provider.name).includes(query);
+        const matchesSearch = matchesProviderSearch(provider, query);
         const matchesCategory = category === "" || provider.category === category;
-        return matchesName && matchesCategory;
+        return matchesSearch && matchesCategory;
     });
 
     if (sortSelect.value === "rating") {
