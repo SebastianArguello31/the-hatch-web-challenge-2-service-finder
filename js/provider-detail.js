@@ -1,5 +1,6 @@
 // Controla la ficha individual a partir del parámetro id de la URL.
 import { getProviderById } from "./api.js";
+import { createRatingForm } from "./rating-form.js";
 import { renderStatus } from "./status.js";
 import { createElement, createStars } from "./utils.js";
 import { createProviderImage, createAvailabilityBadge, createCallButton } from "./provider-ui.js";
@@ -108,7 +109,7 @@ function renderProvider(provider) {
         );
     }
 
-    detailElement.replaceChildren(header, description, facts, services, actions);
+    detailElement.replaceChildren(header, description, facts, services, actions, createRatingForm(provider));
 }
 
 // Valida el id antes de solicitar datos y permite reintentar si la carga falla.
