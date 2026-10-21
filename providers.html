@@ -1,16 +1,19 @@
 <!DOCTYPE html>
+<!-- Catálogo: js/providers.js conecta los filtros con los resultados. -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedores de servicios | Servicios Asunción</title>
     <meta name="description" content="Listado de plomeros, electricistas, técnicos, carpinteros, pintores y mecánicos en Asunción.">
+    <!-- Orden de estilos: variables, base, componentes y ajustes de página. -->
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/pages.css">
 </head>
 <body>
+    <!-- Acceso directo por teclado al main; tabindex permite que reciba el foco. -->
     <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
     <header class="site-header">
@@ -29,10 +32,11 @@
         <h1>Proveedores de servicios</h1>
         <p class="page__lead">Elegí un profesional y contactalo directamente.</p>
 
+        <!-- JavaScript genera las categorías y deshabilita los controles durante la carga. -->
         <form  id="filters-form" class="filters" role="search" aria-label="Buscar proveedores" aria-busy="true">
             <div class="filters__field">
-                <label for="search-input" class="filters__label">Buscar por nombre</label>
-                <input id="search-input" class="filters__control" type="search" placeholder="Ej: Juan" autocomplete="off">
+                <label for="search-input" class="filters__label">Buscar por nombre o problema</label>
+                <input id="search-input" class="filters__control" type="search" placeholder="Ej: Juan, cañería rota o aire no enfría" autocomplete="off">
             </div>
              <div class="filters__field">
                 <label for="category-select" class="filters__label">Categoría</label>
@@ -49,10 +53,12 @@
             </div>    
         </form>
 
+        <!-- aria-live anuncia cambios sin mover el foco del control que se está usando. -->
         <p id="results-count" class="results-count" aria-live="polite"></p>
 
         <div class="providers-results">
             <div id="providers-status" aria-live="polite"></div>
+            <!-- Punto de inserción de las tarjetas creadas desde el catálogo. -->
             <ul id="providers-list" class="providers-grid"></ul>
         </div>
     </main>

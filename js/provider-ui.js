@@ -1,13 +1,16 @@
+// Componentes compartidos para mantener consistentes las tarjetas y los perfiles.
 import { createElement, FALLBACK_IMAGE } from "./utils.js";
 
 const ORIGINAL_IMAGE = "./assets/images/provider-1.webp";
 
+// Variantes generadas por prepare-assets.py para distintos tamaños y densidades de pantalla.
 const IMAGE_SRCSET = [
     "./assets/images/provider-1-80.webp 80w",
     "./assets/images/provider-1-160.webp 160w",
     "./assets/images/provider-1-320.webp 320w",
 ].join(", ");
 
+// Solo la imagen local conocida tiene variantes; las otras rutas se usan directamente.
 export function createProviderImage(
     provider,
     { className, size, lazy = true }
@@ -26,6 +29,8 @@ export function createProviderImage(
         },
     });
 
+    // Elimina las fuentes responsivas para que el navegador use el avatar de respaldo.
+    // once evita repetir el reemplazo si también falla el avatar.
     image.addEventListener("error", () => {
         image.removeAttribute("srcset");
         image.removeAttribute("sizes");
@@ -44,6 +49,7 @@ export function createProviderImage(
     return image;
 }
 
+// Comunica la disponibilidad mediante texto además de color.
 export function createAvailabilityBadge(provider) {
     return createElement("span", {
         className: `badge ${
@@ -55,6 +61,7 @@ export function createAvailabilityBadge(provider) {
     });
 }
 
+// Devuelve null sin teléfono; la página decide si omite la acción o muestra un aviso.
 export function createCallButton(
     provider,
     { className = "btn btn--secondary", label = "Llamar" } = {}

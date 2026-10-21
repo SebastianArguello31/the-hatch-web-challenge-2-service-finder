@@ -32,6 +32,7 @@
   list-style: none;
 }
 
+/* El área mínima de navegación facilita la interacción táctil. */
 .nav-link {
   display: inline-block;
   padding: var(--space-2) var(--space-3);
@@ -186,6 +187,7 @@
   font-size: var(--text-sm);
 }
 
+/* Absorbe espacio libre para alinear las acciones de tarjetas en la misma fila. */
 .provider-card__description {
   flex-grow: 1;
   margin: 0;

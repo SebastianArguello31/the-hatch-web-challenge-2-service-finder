@@ -1,16 +1,19 @@
 <!DOCTYPE html>
+<!-- Inicio: presenta el servicio y enlaza al catálogo por categoría. -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios Asunción | Encontrá profesionales cerca tuyo</title>
     <meta name="description" content="Encontrá plomeros, electricistas, técnicos, carpinteros y más profesionales de confianza en Asunción.">
+    <!-- Orden de estilos: variables, base, componentes y ajustes de página. -->
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/pages.css">
 </head>
 <body>
+    <!-- Acceso directo por teclado al main; tabindex permite que reciba el foco. -->
     <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
     <header class="site-header">
@@ -53,6 +56,7 @@
         <section class="section section--alt" aria-labelledby="categorias-titulo">
             <div class="container">
                 <h2 id="categorias-titulo">Servicios destacados</h2>
+                <!-- category precarga el filtro del catálogo y debe coincidir con una categoría del JSON. -->
                 <ul class="category-grid">
                     <li><a href="./providers.html?category=Plomer%C3%ADa" class="category-card">Plomería</a></li>
                     <li><a href="./providers.html?category=Electricidad" class="category-card">Electricidad</a></li>

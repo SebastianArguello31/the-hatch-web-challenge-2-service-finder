@@ -1,5 +1,7 @@
+// Coordina la carga del catálogo y la actualización de filtros y tarjetas.
 import { getProviders } from "./api.js";
-import { createElement, createStars, normalizeText } from "./utils.js";
+import { createElement, createStars } from "./utils.js";
+import { matchesProviderSearch } from "./provider-search.js";
 import { createProviderImage, createAvailabilityBadge, createCallButton } from "./provider-ui.js";
 import { renderStatus } from "./status.js";
 
@@ -11,8 +13,10 @@ const searchInput = document.querySelector("#search-input");
 const categorySelect = document.querySelector("#category-select");
 const sortSelect = document.querySelector("#sort-select");
 
+// Conserva los datos en el orden original del JSON durante las búsquedas.
 let allProviders = [];
 
+// Construye una tarjeta con acceso al perfil y llamada si hay teléfono.
 function createProviderCard(provider) {
     const card = createElement("li", { className: "provider-card" });
 
@@ -61,17 +65,20 @@ function createProviderCard(provider) {
     return card;
 }
 
+// Sustituye las tarjetas para evitar duplicados al actualizar los filtros.
 function renderProviders(providers) {
     const cards = providers.map(createProviderCard);
     listElement.replaceChildren(...cards);
 }
 
+// Los estados de carga, error o vacío reemplazan los resultados y su contador.
 function showStatus(message, options) {
     renderStatus(statusElement, message, options);
     listElement.replaceChildren();
     countElement.textContent = "";
 }
 
+// Retira el mensaje anterior cuando hay resultados que mostrar.
 function clearStatus() {
     statusElement.replaceChildren();
 }
@@ -81,14 +88,15 @@ function compareByRating(a, b) {
     return b.rating - a.rating || b.reviews - a.reviews;
 }
 
+// Combina texto, problemas frecuentes y categoría; filter crea un arreglo que se ordena sin modificar allProviders.
 function getVisibleProviders() {
-    const query = normalizeText(searchInput.value);
+    const query = searchInput.value;
     const category = categorySelect.value;
 
     const filtered = allProviders.filter(provider => {
-        const matchesName = normalizeText(provider.name).includes(query);
+        const matchesSearch = matchesProviderSearch(provider, query);
         const matchesCategory = category === "" || provider.category === category;
-        return matchesName && matchesCategory;
+        return matchesSearch && matchesCategory;
     });
 
     if (sortSelect.value === "rating") {
@@ -98,12 +106,14 @@ function getVisibleProviders() {
     return filtered;
 }
 
+// Restablece los valores del formulario y devuelve el foco al buscador.
 function resetFilters() {
     filtersForm.reset();
     updateList();
     searchInput.focus();
 }
 
+// Centraliza el renderizado y ofrece limpiar filtros cuando no hay coincidencias.
 function updateList() {
     const visible = getVisibleProviders();
 
@@ -119,9 +129,11 @@ function updateList() {
     countElement.textContent = `Mostrando ${visible.length} de ${allProviders.length} proveedores`;
 }
 
+// Actualiza al editar los controles y evita que Enter recargue la página.
 filtersForm.addEventListener("input", updateList);
 filtersForm.addEventListener("submit", event => event.preventDefault());
 
+// Deduplica categorías y conserva la primera opción: todas las categorías.
 function populateCategories(providers) {
     const categories = [...new Set(providers.map(provider => provider.category))]
         .sort((a, b) => a.localeCompare(b, "es"));
@@ -133,6 +145,7 @@ function populateCategories(providers) {
     categorySelect.replaceChildren(categorySelect.options[0], ...options);
 }
 
+// Se ejecuta después de crear las opciones y acepta solo categorías existentes.
 function applyCategoryFromUrl() {
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
@@ -143,6 +156,7 @@ function applyCategoryFromUrl() {
     }
 }
 
+// Bloquea los filtros durante la carga; los habilita al obtener un catálogo no vacío.
 async function loadProviders() {
     filtersForm.setAttribute("aria-busy", "true");
 
@@ -181,6 +195,7 @@ async function loadProviders() {
                 },
             }
         );
+    // Finaliza el anuncio de carga incluso si hubo error o un retorno anticipado.
     } finally {
         filtersForm.setAttribute("aria-busy", "false");
     }

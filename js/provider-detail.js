@@ -1,4 +1,6 @@
+// Controla la ficha individual a partir del parámetro id de la URL.
 import { getProviderById } from "./api.js";
+import { createRatingForm } from "./rating-form.js";
 import { renderStatus } from "./status.js";
 import { createElement, createStars } from "./utils.js";
 import { createProviderImage, createAvailabilityBadge, createCallButton } from "./provider-ui.js";
@@ -6,11 +8,13 @@ import { createProviderImage, createAvailabilityBadge, createCallButton } from "
 const statusElement = document.querySelector("#provider-status");
 const detailElement = document.querySelector("#provider-detail");
 
+// Quita la ficha anterior para mostrar únicamente el estado actual.
 function showStatus(message, options) {
     renderStatus(statusElement, message, options);
     detailElement.replaceChildren();
 }
 
+// Ofrece volver al catálogo si el id falta o no corresponde a un proveedor.
 function showNotFound() {
     showStatus("No encontramos al proveedor que buscás.", {
         action: { label: "Ver todos los proveedores", href: "./providers.html" },
@@ -25,6 +29,7 @@ function getIdFromUrl() {
     return /^\d+$/.test(rawId ?? "") ? Number(rawId) : null;
 }
 
+// Agrupa una etiqueta y su valor dentro de la lista de definiciones del perfil.
 function createFact(label, value) {
     const fact = createElement("div", { className: "detail__fact" });
     fact.append(
@@ -34,6 +39,7 @@ function createFact(label, value) {
     return fact;
 }
 
+// Compone la ficha reutilizando imagen, disponibilidad y llamada del listado.
 function renderProvider(provider) {
     // Cabecera
     const image = createProviderImage(provider, {
@@ -103,9 +109,10 @@ function renderProvider(provider) {
         );
     }
 
-    detailElement.replaceChildren(header, description, facts, services, actions);
+    detailElement.replaceChildren(header, description, facts, services, actions, createRatingForm(provider));
 }
 
+// Valida el id antes de solicitar datos y permite reintentar si la carga falla.
 async function loadProvider() {
     const id = getIdFromUrl();
 

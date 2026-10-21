@@ -4,6 +4,7 @@
    espaciados, bordes y sombras.
    ========================================================== */
 
+/* Las variables se heredan en todo el documento; esta hoja se carga primero. */
 :root {
   /* Colores */
   --color-primary: #1d4ed8;
