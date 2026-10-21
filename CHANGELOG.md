@@ -1,9 +1,35 @@
 # Changelog
 
 Registro de cambios relevantes de Servicios Asunción, ordenado del más reciente al más antiguo.
-Las fechas corresponden al historial del repositorio, en hora de Paraguay (UTC−3).
+Las fechas corresponden a las entregas documentadas, en hora de Paraguay (UTC−3).
 
 Las versiones identifican las entregas documentadas del proyecto; este archivo no crea etiquetas de versión en Git.
+
+## [3.0.0] - 2026-10-20
+
+### Agregado
+
+- Calificaciones personales de 1 a 5 estrellas desde el perfil, con opción de guardar y actualizar una puntuación por proveedor en `localStorage`.
+- Validación de puntuaciones y mensajes ante fallos de lectura o guardado. Las calificaciones se conservan solo en ese navegador y origen del sitio; no se comparten ni modifican el promedio, las reseñas o el orden del catálogo.
+- Registro de cinco sesiones reales de usabilidad (P1–P5), con tareas, testimonios, dificultades y propuestas en `docs/user-testing.md`.
+
+### Modificado
+
+- Búsqueda ampliada a nombre, categoría, descripción y servicios, con normalización de mayúsculas, acentos, puntuación y espacios.
+- Equivalencias entre problemas habituales y las seis categorías: por ejemplo, “cañería rota” encuentra Plomería y “aire no enfría” encuentra Técnicos. Se mantienen el filtro de categoría y el orden por puntuación.
+- Etiqueta **Buscar por nombre o problema** y ejemplos en el buscador para comunicar las nuevas posibilidades.
+- README actualizado con las funciones actuales, organización de módulos, alcance de las calificaciones locales y guía de comprobación.
+
+### Relación con el feedback y validación
+
+- **P1 / T1:** la persona buscó “cañería rota” y tuvo que recurrir a Plomería. La búsqueda por problemas habituales implementa la mejora priorizada a partir de ese hallazgo.
+- **P2 / T2:** conservar búsqueda, categoría y orden al regresar del perfil sigue pendiente.
+- Las calificaciones locales son una funcionalidad nueva; no se atribuyen a un testimonio específico de las cinco sesiones.
+- El registro de usabilidad conserva las sesiones originales y sus propuestas. Sigue pendiente una nueva sesión que valide la búsqueda ampliada con usuarios.
+- Los reportes Lighthouse disponibles corresponden a 2.0.0; no constituyen mediciones de 3.0.0.
+
+Referencias: [pruebas con usuarios](./docs/user-testing.md), [búsqueda implementada](./js/provider-search.js) y [guía de comprobación](./README.md#guía-de-comprobación-manual).
+Commits de implementación existentes: `cbc9c14` (calificaciones), `d04266c` (búsqueda por problemas) y `87ad59c` (formulario).
 
 ## [2.0.0] - 2026-10-19
 
