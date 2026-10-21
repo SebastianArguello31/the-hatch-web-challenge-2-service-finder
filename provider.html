@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Detalle: js/provider-detail.js lee el id de la URL y carga la ficha. -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil del proveedor | Servicios Asunción</title>
     <meta name="description" content="Perfil de un proveedor de servicios en Asunción: calificación, zona, experiencia y servicios ofrecidos.">
+    <!-- Precarga la imagen compartida por los proveedores actuales; coincide con el srcset del componente. -->
     <link
         rel="preload"
         as="image"
@@ -18,12 +20,14 @@
         imagesizes="160px"
         fetchpriority="high"
     >
+    <!-- Orden de estilos: variables, base, componentes y ajustes de página. -->
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/pages.css">
 </head>
 <body>
+    <!-- Acceso directo por teclado al main; tabindex permite que reciba el foco. -->
     <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
     <header class="site-header">
@@ -43,6 +47,7 @@
 
         <h1 class="visually-hidden">Perfil del proveedor</h1>
 
+        <!-- Se anuncia el estado; la ficha se inserta en el article al obtener los datos. -->
         <div id="provider-status" aria-live="polite"></div>
         <article id="provider-detail" class="detail"></article>
     </main>

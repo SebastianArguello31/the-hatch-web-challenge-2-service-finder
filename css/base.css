@@ -13,6 +13,7 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* La columna flexible permite que main empuje el pie al borde inferior. */
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -20,6 +21,7 @@ body {
   line-height: var(--leading-body);
   color: var(--color-text);
   background-color: var(--color-background);
+  /* vh sirve de respaldo; svh considera la interfaz visible del navegador móvil. */
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
